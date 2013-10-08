@@ -1,0 +1,41 @@
+{
+  "version": "0.1.0-2",
+  "description": "Messaging System",
+  "main": "data.js",
+  "dependencies": {
+    "jugglingdb": "~0.2.0-40",
+    "async": "~0.2.9",
+    "restify": "~2.6.0",
+    "mysql": "~2.0.0-alpha9",
+    "jugglingdb-mysql": "~0.0.1-7",
+    "express": "~3.4.0",
+    "supervisor": "~0.5.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philipjrosen/messaging-system"
+  },
+  "keywords": [
+    "async",
+    "express",
+    "jugglingdb",
+    "jugglingdb-mysql",
+    "mysql",
+    "supervisor"
+  ],
+  "author": {
+    "name": "Philip J. Rosen",
+    "email": "philipjrosen@gmail.com"
+  },
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "5c2a509ac0974ca8abae1f5eaf701021aaeb1786",
+  "name": "Udacity",
+  "subdomain": "philipjrosen-Udacity",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

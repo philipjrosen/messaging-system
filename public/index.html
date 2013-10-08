@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">UDACITY</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      <div class="navbar-collapse collapse" id="navbar-main">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" target="_blank">CourseCatelog</a></li>
+          <li><a href="#" target="_blank">My Courses</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Philip Rosen<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              <li><a tabindex="-1" href="#">Profile</a></li>
+              <li><a tabindex="-1" href="#">Accounts</a></li>
+              <li><a tabindex="-1" href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">SignOut</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    <h2>Message Center</h2>
+    <div class="container">
+      <ul class="nav nav-tabs" style="margin-bottom: 15px;" id="tabs">
+        <li class="active"><a href="#inbox" data-toggle="tab">Inbox</a></li>
+        <li><a href="#contacts" data-toggle="tab">Contacts</a></li>
+        <li><a href="#new-message" data-toggle="tab">New Message</a></li>
+        <li><a href="#read-message" data-toggle="tab">Subject</a></li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+          <div class="tab-pane in active" id="inbox">
+            <table class="table table-striped table-bordered table-hover">
+  	          <thead>
+  	            <tr>
+  	              <th>Sender</th>
+  	              <th>Subject</th>
+  	              <th>Date Sent</th>
+  	            </tr>
+  	          </thead>
+              <tbody id="inbox-placeholder" ></tbody>
+                <script type="text/x-handlebars-template" id="inbox-template">
+                  {{#each messages}}
+                  {{#if read}}
+      	            <tr data-id="{{message_id}}">
+      	              <td><a href = "#" >{{sender}}</a></td>
+      	              <td><a href = "#">{{subject}}</a></td>
+      	              <td><a href = "#">{{createdAt}}</a></td>
+      	            </tr>
+                    {{else}}
+                    <tr class='bold' data-id="{{message_id}}">
+                      <td><a href = "#">{{sender}}</a></td>
+                      <td><a href = "#">{{subject}}</a></td>
+                      <td><a href = "#">{{createdAt}}</a></td>
+                    </tr>
+                    {{/if}}
+                  {{/each}}
+                </script>
+              </table>
+          </div> 
+          <div class="tab-pane in" id="contacts">
+            <table class="table table-striped table-bordered table-hover">
+  	          <thead>
+  	            <tr>
+  	              <th>Name</th>
+  	            </tr>
+  	          </thead>
+  	        <tbody id="contacts-placeholder"></tbody>
+            <script type="text/x-handlebars-template" id="contacts-template">
+              {{#each contacts}}
+                <tr>
+                  <td>{{name}}</td>
+                </tr>
+              {{/each}}
+            </script>
+  	        </table>
+          </div>
+          <div class="tab-pane in" id="read-message">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="well">
+                <form class="bs-example form-horizontal" id="message-form">
+                  <fieldset>
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button id="close" class="btn btn-default">Close</button> 
+                        <button id="delete" class="btn btn-danger">Delete Message</button>
+                        <span id="sender"></span> 
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>  
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane in" id="new-message">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="well">
+                <form class="bs-example form-horizontal">
+                  <fieldset id="message-fields">
+                    <legend id="form-legend">New Message</legend>
+                    <div class="form-group">
+                      <label for="input-email" class="col-lg-2 control-label">To:</label>
+                      <div class="col-lg-10" id="autocomplete-container">
+                        <input type="text" class="form-control" id="input-email" placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-subject" class="col-lg-2 control-label">Subject:</label>
+                      <div class="col-lg-10">
+                      <input type="text" class="form-control" id="input-subject" placeholder="Subject">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="textArea" class="col-lg-2 control-label">Message:</label>
+                      <div class="col-lg-10" id="editor-container">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button id="cancel" class="btn btn-default">Cancel</button> 
+                        <button id="submit" type="submit" class="btn btn-primary">Send</button> 
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script src="lib/EpicEditor/js/epiceditor.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>
